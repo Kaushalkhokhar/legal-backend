@@ -6,4 +6,4 @@ app.include_router(docsRouter, tags=["docs"], prefix="/legal/v1/docs")
 
 @app.get("/")
 async def root():
-    return {"message": "Welcome to the Legal World. Everything is per act and law!"}
+    return {"message": "Welcome to the Legal World. Everything is per acts and law!"}
