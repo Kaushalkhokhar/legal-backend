@@ -1,0 +1,11 @@
+cluster.name: home_server
+node.name: gehan-pc
+path.data: C:\Elasticsearch\data
+path.logs: C:\Elasticsearch\logs
+network.host: 127.0.0.1
+network.bind_host: 0.0.0.0
+http.port: 9200
+http.cors.enabled : true
+http.cors.allow-origin : "*"
+http.cors.allow-methods : OPTIONS, HEAD, GET, POST, PUT, DELETE
+http.cors.allow-headers : X-Requested-With,X-Auth-Token,Content-Type, Content-Length
