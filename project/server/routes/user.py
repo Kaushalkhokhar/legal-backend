@@ -18,6 +18,8 @@ from server.models.user import (
 router = APIRouter()
 
 # For create
+
+
 @router.post("/", response_description="user data added into the database")
 async def add_user_data(user: UserSchema = Body(...)):
     user = jsonable_encoder(user)
@@ -58,7 +60,7 @@ async def update_user_data(id: str, req: UpdateUserModel = Body(...)):
         404,
         "There was an error updating the user data.",
     )
-    
+
 
 # For delete
 @router.delete("/{id}", response_description="user data deleted from the database")

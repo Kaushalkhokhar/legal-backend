@@ -6,7 +6,8 @@ client = motor.motor_asyncio.AsyncIOMotorClient(MONGO_DETAILS)
 database = client.Users
 user_collection = database.get_collection("users_collection")
 
-def user_helper(user) -> dict: 
+
+def user_helper(user) -> dict:
 
     return {
         "id": str(user["_id"]),
@@ -33,7 +34,7 @@ def user_helper(user) -> dict:
         "resetPasswordSentAt": user["resetPasswordSentAt"],
         "resetPasswordToken": user["resetPasswordToken"],
         "deviceId": user["deviceId"],
-        "deviceToken" : user["deviceToken"],
+        "deviceToken": user["deviceToken"],
         "ipv6": user["ipv6"],
         "ipv4": user["ipv4"],
         "deviceType": user["deviceType"],
@@ -41,13 +42,15 @@ def user_helper(user) -> dict:
         "location": user["location"],
         "meta": user["meta"],
         "createdAt": user["createdAt"],
-        "updatedAt": user["updatedAt"], 
+        "updatedAt": user["updatedAt"],
         "isDeleted": user["isDeleted"],
         "createdBy": user["createdBy"],
         "updatedBy": user["updatedBy"],
     }
-    
+
 # Retrieve all users present in the database
+
+
 async def retrieve_users():
     users = []
     async for user in user_collection.find():
@@ -90,4 +93,3 @@ async def delete_user(id: str):
     if user:
         await user_collection.delete_one({"_id": ObjectId(id)})
         return True
-

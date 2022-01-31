@@ -1,17 +1,17 @@
 from optparse import Option
 from typing import Dict, Optional, List
-from datetime import datetime,timedelta
+from datetime import datetime, timedelta
 from pydantic import BaseModel, EmailStr, Field
 
 # now = datetime.now()
 # class LatLong(BaseModel):
-#     lat : Optional[int] 
-#     long : Optional[int] 
+#     lat : Optional[int]
+#     long : Optional[int]
 
 
 class LocationSchema(BaseModel):
-    type : Optional[str]
-    coardinates : Optional[List[int]] = [1234.2,234.3]
+    type: Optional[str]
+    coardinates: Optional[List[int]] = [1234.2, 234.3]
 
 
 class UserSchema(BaseModel):
@@ -28,30 +28,34 @@ class UserSchema(BaseModel):
     birthYear: str
     userStatus: str
     userRole: str
-    lastSessionStartTime: Optional[datetime] = Field(..., example="2019-04-01T00:00:00.000Z", description="ISO 8601 format")
-    lastLoginAt: Optional[datetime] = Field(..., example="2019-04-01T00:00:00.000Z", description="ISO 8601 format")
-    lastSessionEndTime: Optional[datetime] = Field(..., example="2019-04-01T00:00:00.000Z", description="ISO 8601 format")
+    lastSessionStartTime: Optional[datetime] = Field(
+        ..., example="2019-04-01T00:00:00.000Z", description="ISO 8601 format")
+    lastLoginAt: Optional[datetime] = Field(
+        ..., example="2019-04-01T00:00:00.000Z", description="ISO 8601 format")
+    lastSessionEndTime: Optional[datetime] = Field(
+        ..., example="2019-04-01T00:00:00.000Z", description="ISO 8601 format")
     failedAttempts: int
     signinCount: int
     token: str
     unlockToken: str
-    resetPasswordSentAt: Optional[datetime] = Field(..., example="2019-04-01T00:00:00.000Z", description="ISO 8601 format")
+    resetPasswordSentAt: Optional[datetime] = Field(
+        ..., example="2019-04-01T00:00:00.000Z", description="ISO 8601 format")
     resetPasswordToken: str
     deviceId: str
-    deviceToken : str
+    deviceToken: str
     ipv6: str
     ipv4: str
     deviceType: str
     deviceOs: str
     meta: str
-    createdAt: Optional[datetime] = Field(..., example="2019-04-01T00:00:00.000Z", description="ISO 8601 format")
-    updatedAt: Optional[datetime] = Field(..., example="2019-04-01T00:00:00.000Z", description="ISO 8601 format")
+    createdAt: Optional[datetime] = Field(
+        ..., example="2019-04-01T00:00:00.000Z", description="ISO 8601 format")
+    updatedAt: Optional[datetime] = Field(
+        ..., example="2019-04-01T00:00:00.000Z", description="ISO 8601 format")
     isDeleted: Optional[bool] = True
     createdBy: Optional[str]
     location: Optional[LocationSchema]
     updatedBy: str
-
-
 
     class Config:
         schema_extra = {
@@ -79,17 +83,17 @@ class UserSchema(BaseModel):
                 "resetPasswordSentAt": "2019-04-01T00:00:00.000Z",
                 "resetPasswordToken": "juytghj",
                 "deviceId": "yghujhgfhh",
-                "deviceToken" : "htguytgyuytgh",
+                "deviceToken": "htguytgyuytgh",
                 "ipv6": "ytfghhtrfghuyg",
                 "ipv4": "iuytghjgfg",
                 "deviceType": "uytghuytfghyt",
                 "deviceOs": "iuytghuytghyg",
                 "meta": "null",
-                "createdAt":"2019-04-01T00:00:00.000Z",
-                "updatedAt":"2019-04-01T00:00:00.000Z",
+                "createdAt": "2019-04-01T00:00:00.000Z",
+                "updatedAt": "2019-04-01T00:00:00.000Z",
                 "isDeleted": "False",
                 "createdBy": "frgthtfd",
-                "location" : {"type":"Points", "cordinates" : [12.12,34.34]},
+                "location": {"type": "Points", "cordinates": [12.12, 34.34]},
                 "updatedBy": "eatrytykjt",
             }
         }
@@ -115,7 +119,7 @@ class UpdateUserModel(BaseModel):
     unlockToken: Optional[str]
     resetPasswordToken: Optional[str]
     deviceId: Optional[str]
-    deviceToken : Optional[str]
+    deviceToken: Optional[str]
     ipv6: Optional[str]
     ipv4: Optional[str]
     deviceType: Optional[str]
@@ -149,7 +153,7 @@ class UpdateUserModel(BaseModel):
                 "unlockToken": "gfghjh",
                 "resetPasswordToken": "juytghj",
                 "deviceId": "yghujhgfhh",
-                "deviceToken" : "htguytgyuytgh",
+                "deviceToken": "htguytgyuytgh",
                 "ipv6": "ytfghhtrfghuyg",
                 "ipv4": "iuytghjgfg",
                 "deviceType": "uytghuytfghyt",
@@ -157,7 +161,7 @@ class UpdateUserModel(BaseModel):
                 "meta": "null",
                 "isDeleted": "False",
                 "createdBy": "frgthtfd",
-                "location" : {"type":"Points", "cordinates" : [12.12,34.34]},
+                "location": {"type": "Points", "cordinates": [12.12, 34.34]},
                 "updatedBy": "eatrytykjt",
             }
         }
