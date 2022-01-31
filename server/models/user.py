@@ -1,11 +1,19 @@
-from typing import Optional, List
+from optparse import Option
+from typing import Dict, Optional, List
 from datetime import datetime,timedelta
 from pydantic import BaseModel, EmailStr, Field
 
 # now = datetime.now()
+# class LatLong(BaseModel):
+#     lat : Optional[int] 
+#     long : Optional[int] 
 
 
-    
+class LocationSchema(BaseModel):
+    type : Optional[str]
+    coardinates : Optional[List[int]] = [1234.2,234.3]
+
+
 class UserSchema(BaseModel):
     userID: str
     email: str
@@ -40,8 +48,7 @@ class UserSchema(BaseModel):
     updatedAt: Optional[datetime] = Field(..., example="2019-04-01T00:00:00.000Z", description="ISO 8601 format")
     isDeleted: Optional[bool] = True
     createdBy: Optional[str]
-    lat: int
-    long: int
+    location: Optional[LocationSchema]
     updatedBy: str
 
 
@@ -82,8 +89,7 @@ class UserSchema(BaseModel):
                 "updatedAt":"2019-04-01T00:00:00.000Z",
                 "isDeleted": "False",
                 "createdBy": "frgthtfd",
-                "lat":"123456",
-                "long":"121345",
+                "location" : {"type":"Points", "cordinates" : [12.12,34.34]},
                 "updatedBy": "eatrytykjt",
             }
         }
@@ -118,8 +124,7 @@ class UpdateUserModel(BaseModel):
     meta: Optional[str]
     isDeleted: Optional[bool] = True
     createdBy: Optional[str]
-    lat: Optional[int]
-    long: Optional[int]
+    location: Optional[LocationSchema]
     updatedBy: Optional[str]
 
     class Config:
@@ -152,8 +157,7 @@ class UpdateUserModel(BaseModel):
                 "meta": "null",
                 "isDeleted": "False",
                 "createdBy": "frgthtfd",
-                "lat":"123456",
-                "long":"121345",
+                "location" : {"type":"Points", "cordinates" : [12.12,34.34]},
                 "updatedBy": "eatrytykjt",
             }
         }

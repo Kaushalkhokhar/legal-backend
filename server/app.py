@@ -34,7 +34,7 @@ cursor = collection.find({})
 loop = 0
 for user in cursor:
     user = user_helper(user)
-    es.index(index="user_index", doc_type="text", id=loop, body=user)
+    es.index(index="user_index",id=loop, body=user)
     loop +=1
     print(type(user))
 
@@ -48,6 +48,8 @@ for user in cursor:
 @app.get("/search")
 async def search(query_para : Esearch):
     query_str = jsonable_encoder(query_para).get("user_query")
+    # es.index(index="query_index", doc_type="text", id=loop, body=query_str)
     print(query_str)
-    es.index(index="query_index", doc_type="text", id=loop, body=query_str)
+    import pdb
+    pdb.set_trace()
 
